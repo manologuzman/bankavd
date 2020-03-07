@@ -1,0 +1,13 @@
+<div class="card m-2 p-1" *ngFor="let item of items" style="width: 15em;height: 20em;display: inline-block;">
+    <a href="#" class="stretched-link align-top float-right ">Ver Detalle ></a>
+    <img src="../../../../assets/cuenta_deposito.JPG" class="rounded float-left" alt="bank" width="60" height="50">
+    <br><br>
+    <div class="w-100"></div>
+    <div class="card-body">
+        <h5 class="card-title">{{item.accountInformation.productType| nproducts}}</h5>
+        <p class="card-text">Nro. {{item.id}}</p>
+        <p class="card-text">Pago Total: {{item.productAccountBalances.saldo_disponible.amount  | currency}}</p>
+        <p class="card-text">Fecha de pago: {{item.dueDate| date:'shortDate'}} </p>
+        <button type="button" class="btn btn-primary btn-block">Pagar</button>
+    </div>
+</div>

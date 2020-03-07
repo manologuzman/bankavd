@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="col-md-2 col-lg-2">
+        <!--Header-->
+        <app-menu></app-menu>
+    </div>
+    <div class="col-md-9 col-lg-9">
+        <main role="main" class="container">
+
+            <!--Header-->
+            <app-header></app-header>
+
+            <!--All Products-->
+            <br>
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div class=" m_productos custom-control custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="todos" [value]="todos" class="custom-control-input"
+                            id="customCheck1">
+                        <label class="custom-control-label h6" for="customCheck1">Mostrar otros productos</label>
+                    </div>
+                </div>
+            </div>
+
+            <!--All finanzas-->
+            <br>
+            <div class="row shadow p-3 mb-5 bg-white rounded">
+                <div class="col-md-12 col-lg-12">
+                    <div class="row">
+                        <div class="m_productos col-md-1 col-lg-6">
+                            <p class="h6"><b>¿Cómo se ven tus finanzas?</b></p>
+                        </div>
+                        <div class=" m_productos col-md-10 col-lg-2">
+                        </div>
+                        <div class=" m_productos col-md-10 col-lg-2">
+                            <p><b>En productos de Ahorro tienes:</b></p>
+                        </div>
+                        <div class=" m_productos col-md-1 col-lg-2">
+                            <p><b> $2.351.000,00</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Cards Products-->
+
+
+            <div class="row">
+                <ng-container *ngIf="todos; else elseBlock">
+                    <ng-container class="card_black" *ngFor="let item of product">
+                        <app-card-deposit-account [item]="item"
+                            *ngIf="item.accountInformation.productType==='DEPOSIT_ACCOUNT'">
+                        </app-card-deposit-account>
+
+                        <app-card-certified-deposit-term [item]="item"
+                            *ngIf="item.accountInformation.productType==='CERTIFIED_DEPOSIT_TERM'">
+                        </app-card-certified-deposit-term>
+
+                        <app-card-credit [item]="item" *ngIf="item.accountInformation.productType==='CREDIT'">
+                        </app-card-credit>
+
+                        <app-card-credit-card [item]="item" *ngIf="item.accountInformation.productType==='CREDIT_CARD'">
+                        </app-card-credit-card>
+
+                        <app-card-current-account [item]="item"
+                            *ngIf="item.accountInformation.productType==='CURRENT_ACCOUNT'">
+                        </app-card-current-account>
+                    </ng-container>
+                </ng-container>
+                <ng-template #elseBlock>
+                    <ng-container class="card_black" *ngFor="let item of product">
+                        <ng-container class="card  no-item" *ngIf="item.accountInformation.bank===banco">
+
+                            <app-card-deposit-account [item]="item"
+                                *ngIf="item.accountInformation.productType==='DEPOSIT_ACCOUNT'">
+                            </app-card-deposit-account>
+
+                            <app-card-certified-deposit-term [item]="item"
+                                *ngIf="item.accountInformation.productType==='CERTIFIED_DEPOSIT_TERM'">
+                            </app-card-certified-deposit-term>
+
+                            <app-card-credit [item]="item" *ngIf="item.accountInformation.productType==='CREDIT'">
+                            </app-card-credit>
+
+                            <app-card-credit-card [item]="item"
+                                *ngIf="item.accountInformation.productType==='CREDIT_CARD'">
+                            </app-card-credit-card>
+
+                            <app-card-current-account [item]="item"
+                                *ngIf="item.accountInformation.productType==='CURRENT_ACCOUNT'">
+                            </app-card-current-account>
+
+                        </ng-container>
+                    </ng-container>
+                </ng-template>
+            </div>
+
+
+            <!--Footer-->
+            <br>
+            <div class="row">
+                <div class="col-md-10 col-lg-10  mx-auto d-block m-5">
+                    <app-footer></app-footer>
+                </div>
+            </div>
+            <br>
+
+
+            <!--End main-->
+        </main>
+    </div>
+    <div class="col-md-1 col-lg-1">
+    </div>
+</div>
+<div class="row shadow p-3 bg-white rounded">
+    <div class="col-12">
+        <p class="h5 text-center"><b>@Banco</b></p>
+    </div>
+</div>

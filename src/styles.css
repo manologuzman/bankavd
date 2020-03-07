@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Smartphones (landscape) ----------- */
+
+@media only screen and (min-width: 321px) {
+    .usuario {
+        text-align: center;
+    }
+    .logo {
+        width: 5em;
+        height: 5em;
+        margin: 0;
+        padding: 0;
+    }
+    .m_productos {
+        text-align: center;
+    }
+  
+}
+
+/* Large desktop */
+
+@media (min-width: 1200px) {
+    .usuario {
+        text-align: left;
+    } 
+    .m_productos {
+        text-align: left;
+    }
+}
+
+/* Portrait tablet to landscape and desktop */
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .usuario {
+        text-align: left;
+    }
+    .m_productos {
+        text-align: left;
+    }
+}
+
+p {
+    font-size: x-small;
+}
+
+a {
+    font-size: x-small;
+}

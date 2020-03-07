@@ -1,0 +1,11 @@
+.card{
+    border: solid black;  
+  }
+
+  .card_black{
+    display: inline-flex;
+    margin: 2px;
+  }
+  .no-item:not(:first-child) {
+    display:none;
+  }

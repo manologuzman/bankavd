@@ -1,0 +1,11 @@
+<div class="card m-2 p-1" *ngFor="let item of items" style="width: 15em;height: 20em;display: inline-block;">
+    <a href="#" class="stretched-link align-top float-right ">Ver Detalle ></a>
+    <img src="../../../../assets/credito.JPG" class="rounded float-left" alt="bank" width="60" height="50">
+    <br><br>
+    <div class="w-100"></div>
+    <div class="card-body">
+        <h5 class="card-title">{{item.accountInformation.productType| nproducts}}</h5>
+        <p class="card-text">Nro. {{item.id}}</p>
+        <p class="card-text">Bloqueda: {{item.locked}}</p>
+    </div>
+</div>
