@@ -1,27 +1,33 @@
-<nav class="side-menu shadow-sm" aria-label="Menú principal">
-  <div class="side-menu__brand">
-    <img src="assets/bank.jpg" class="logo" alt="Banco" width="96" height="80" />
+<nav class="bg-white min-h-full p-4 lg:p-6 lg:pb-8 flex flex-col" aria-label="Menú principal">
+  <div class="flex justify-center py-2 lg:pb-8">
+    <img src="assets/bank.jpg" class="w-24 lg:w-28 h-auto rounded-lg object-contain transition-transform duration-300 hover:scale-105" alt="Banco" width="96" height="80" />
   </div>
 
-  <ul class="side-menu__list">
-    <li class="side-menu__item is-active">
-      <span class="side-menu__label">Tus productos</span>
+  <ul class="list-none m-0 p-0 flex flex-row lg:flex-col flex-wrap gap-2">
+    <li class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start py-3 px-4 rounded-xl cursor-pointer transition-colors duration-150 relative bg-indigo-50/50">
+      <div class="hidden lg:block absolute left-0 top-[15%] h-[70%] w-1 bg-primary rounded-r"></div>
+      <span class="text-[0.9rem] font-bold text-primary">Tus productos</span>
     </li>
-    <li class="side-menu__item">
-      <span class="side-menu__label">Tu organizador</span>
-      <span class="side-menu__badge">¡Nuevo!</span>
+    
+    <li class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start py-3 px-4 rounded-xl cursor-pointer transition-colors duration-150 hover:bg-gray-100 group">
+      <span class="text-[0.9rem] font-semibold text-gray-500 group-hover:text-gray-700">Tu organizador</span>
+      <span class="ml-auto text-[0.7rem] font-bold text-white bg-accent px-2 py-0.5 rounded-full hidden lg:inline-block">¡Nuevo!</span>
     </li>
-    <li class="side-menu__item">
-      <span class="side-menu__label">Pagos</span>
+    
+    <li class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start py-3 px-4 rounded-xl cursor-pointer transition-colors duration-150 hover:bg-gray-100 group">
+      <span class="text-[0.9rem] font-semibold text-gray-500 group-hover:text-gray-700">Pagos</span>
     </li>
-    <li class="side-menu__item">
-      <span class="side-menu__label">Transferencias</span>
+    
+    <li class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start py-3 px-4 rounded-xl cursor-pointer transition-colors duration-150 hover:bg-gray-100 group">
+      <span class="text-[0.9rem] font-semibold text-gray-500 group-hover:text-gray-700">Transferencias</span>
     </li>
-    <li class="side-menu__item">
-      <span class="side-menu__label">Certificados</span>
+    
+    <li class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start py-3 px-4 rounded-xl cursor-pointer transition-colors duration-150 hover:bg-gray-100 group">
+      <span class="text-[0.9rem] font-semibold text-gray-500 group-hover:text-gray-700">Certificados</span>
     </li>
-    <li class="side-menu__item">
-      <span class="side-menu__label">Seguridad</span>
+    
+    <li class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start py-3 px-4 rounded-xl cursor-pointer transition-colors duration-150 hover:bg-gray-100 group">
+      <span class="text-[0.9rem] font-semibold text-gray-500 group-hover:text-gray-700">Seguridad</span>
     </li>
   </ul>
 </nav>

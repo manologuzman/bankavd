@@ -1,62 +1,61 @@
-<div class="app-shell">
-  <aside class="app-sidebar">
+<div class="flex flex-col lg:flex-row min-h-screen items-stretch">
+  <aside class="flex-none lg:w-[260px] bg-white border-b lg:border-b-0 lg:border-r border-gray-200 z-10">
     <app-menu></app-menu>
   </aside>
 
-  <div class="app-main">
-    <main role="main" class="app-content">
+  <div class="flex-1 flex flex-col min-w-0">
+    <main role="main" class="flex-1 p-5 lg:p-8 max-w-[1400px] w-full mx-auto">
       <app-header></app-header>
 
-      <div class="m_productos products-filter">
-        <div class="custom-control custom-checkbox">
+      <div class="my-6 flex items-center">
+        <label class="flex items-center space-x-3 cursor-pointer select-none">
           <input type="checkbox"
             [(ngModel)]="mostrarOtros"
             (ngModelChange)="onToggleOtros()"
-            class="custom-control-input"
-            id="customCheck1">
-          <label class="custom-control-label" for="customCheck1">Mostrar otros productos</label>
+            class="form-checkbox h-5 w-5 text-primary rounded border-gray-300 focus:ring-primary transition-colors">
+          <span class="text-[0.95rem] font-medium text-gray-600">Mostrar otros productos</span>
+        </label>
+      </div>
+
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-8 bg-gradient-to-br from-primary to-purple-500 rounded-2xl p-6 lg:p-8 mb-8 text-white shadow-lg">
+        <p class="text-xl font-semibold m-0">¿Cómo se ven tus finanzas?</p>
+        <div class="flex flex-wrap items-baseline gap-3">
+          <span class="text-[0.95rem] font-medium opacity-90">En productos de Ahorro tienes:</span>
+          <span class="text-3xl font-extrabold tracking-tight">{{ totalAhorro | currency:'COP':'symbol-narrow':'1.2-2' }}</span>
         </div>
       </div>
 
-      <div class="finance-summary shadow-sm">
-        <p class="finance-summary__title mb-0">¿Cómo se ven tus finanzas?</p>
-        <div class="finance-summary__total">
-          <span class="finance-summary__label">En productos de Ahorro tienes:</span>
-          <span class="finance-summary__amount">{{ totalAhorro | currency:'COP':'symbol-narrow':'1.2-2' }}</span>
-        </div>
-      </div>
-
-      <div class="products-grid">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
         <ng-container *ngFor="let item of productosVisibles">
           <app-card-deposit-account [item]="item"
-            *ngIf="item.accountInformation.productType==='DEPOSIT_ACCOUNT'">
+            *ngIf="item.accountInformation.productType==='DEPOSIT_ACCOUNT'" class="flex w-full">
           </app-card-deposit-account>
 
           <app-card-certified-deposit-term [item]="item"
-            *ngIf="item.accountInformation.productType==='CERTIFIED_DEPOSIT_TERM'">
+            *ngIf="item.accountInformation.productType==='CERTIFIED_DEPOSIT_TERM'" class="flex w-full">
           </app-card-certified-deposit-term>
 
           <app-card-credit [item]="item"
-            *ngIf="item.accountInformation.productType==='CREDIT'">
+            *ngIf="item.accountInformation.productType==='CREDIT'" class="flex w-full">
           </app-card-credit>
 
           <app-card-credit-card [item]="item"
-            *ngIf="item.accountInformation.productType==='CREDIT_CARD'">
+            *ngIf="item.accountInformation.productType==='CREDIT_CARD'" class="flex w-full">
           </app-card-credit-card>
 
           <app-card-current-account [item]="item"
-            *ngIf="item.accountInformation.productType==='CURRENT_ACCOUNT'">
+            *ngIf="item.accountInformation.productType==='CURRENT_ACCOUNT'" class="flex w-full">
           </app-card-current-account>
         </ng-container>
       </div>
 
-      <div class="app-offers">
+      <div class="mt-14 max-w-[900px] mx-auto">
         <app-footer></app-footer>
       </div>
     </main>
 
-    <footer class="app-brand-bar shadow-sm">
-      <p class="mb-0"><b>@Banco</b></p>
+    <footer class="bg-white text-center p-4 text-base border-t border-gray-200 text-gray-400">
+      <p class="m-0 font-bold">@Banco</p>
     </footer>
   </div>
 </div>
