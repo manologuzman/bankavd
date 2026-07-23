@@ -1,26 +1,71 @@
-/* Tipografía y base */
+/* ==========================================================================
+   Variables Globales - Tema Premium Bank AVD
+   ========================================================================== */
+:root {
+  /* Colores Principales */
+  --primary-color: #4F46E5; /* Indigo/Violeta Premium */
+  --primary-hover: #4338CA;
+  --secondary-color: #10B981; /* Esmeralda para éxito/dinero */
+  --accent-color: #F59E0B;
+  
+  /* Fondos y Superficies */
+  --bg-app: #F3F4F6;
+  --bg-surface: #FFFFFF;
+  --bg-sidebar: #FFFFFF;
+  
+  /* Textos */
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  
+  /* Bordes y Sombras */
+  --border-color: #E5E7EB;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Transiciones */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Base y Tipografía
+   ========================================================================== */
 html {
   font-size: 16px;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 body {
   margin: 0;
-  background-color: #f0f2f5;
-  color: #212529;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.5;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  color: #0d6efd;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
+  color: var(--primary-hover);
   text-decoration: none;
-  color: #0a58ca;
 }
 
-/* Layout responsive: alineación de textos de utilidad */
+/* ==========================================================================
+   Utilidades Responsive
+   ========================================================================== */
 @media only screen and (max-width: 767.98px) {
   .usuario,
   .m_productos {
@@ -28,7 +73,7 @@ a:hover {
   }
 
   .logo {
-    width: 4.5rem;
+    width: 5rem;
     height: auto;
   }
 }
@@ -40,7 +85,9 @@ a:hover {
   }
 }
 
-/* Cards de producto (compartidas) */
+/* ==========================================================================
+   Tarjetas de Producto (Compartidas)
+   ========================================================================== */
 .product-card {
   width: 100%;
   height: 100%;
@@ -48,71 +95,120 @@ a:hover {
   display: flex;
   flex-direction: column;
   position: relative;
-  border: 1px solid #dee2e6;
-  border-radius: 0.35rem;
-  background: #fff;
-  padding: 0.75rem 0.85rem;
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Efecto sutil */
+  border-radius: 1rem;
+  background: var(--bg-surface);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  overflow: hidden;
+}
+
+/* Pseudo-elemento para un degradado sutil en el borde superior */
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), #8B5CF6);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
 }
 
 .product-card:hover {
-  border-color: #c5ccd4;
-  box-shadow: 0 0.25rem 0.75rem rgba(33, 37, 41, 0.08);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: transparent;
+}
+
+.product-card:hover::before {
+  opacity: 1;
 }
 
 .product-card__top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .product-card__icon {
-  width: 3.25rem;
-  height: 2.75rem;
-  object-fit: contain;
-  border-radius: 0.25rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .product-card__link {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
   z-index: 2;
   position: relative;
+  color: var(--primary-color);
+  background: rgba(79, 70, 229, 0.1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.product-card__link:hover {
+  background: var(--primary-color);
+  color: #fff;
 }
 
 .product-card .card-body {
   flex: 1;
-  padding: 0.35rem 0 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
 }
 
 .product-card .card-title {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 0.65rem;
-  color: #212529;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
 .product-card .card-text {
-  font-size: 0.8125rem;
-  color: #6c757d;
-  margin-bottom: 0.35rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
 }
 
 .product-card .card-text strong,
 .product-card .card-amount {
-  color: #212529;
+  color: var(--text-primary);
   font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.product-card .card-amount {
+  color: var(--secondary-color);
 }
 
 .product-card .btn {
   margin-top: auto;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  letter-spacing: 0.02em;
 }
 
 .product-card .progress {
-  height: 0.45rem;
-  margin-top: 0.5rem;
+  height: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  background-color: var(--border-color);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.product-card .progress-bar {
+  background-color: var(--primary-color);
+  border-radius: 1rem;
 }
