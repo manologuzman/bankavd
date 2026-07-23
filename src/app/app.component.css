@@ -1,11 +1,118 @@
-.card{
-    border: solid black;  
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
+}
+
+.app-sidebar {
+  flex: 0 0 220px;
+  max-width: 220px;
+  background: #fff;
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+  padding: 1.25rem 1.5rem 2rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.products-filter {
+  margin: 1.25rem 0 1rem;
+}
+
+.products-filter .custom-control-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding-top: 0.1rem;
+}
+
+.finance-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  background: #fff;
+  border-radius: 0.35rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.finance-summary__title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.finance-summary__total {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+}
+
+.finance-summary__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.finance-summary__amount {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.products-grid > * {
+  display: flex;
+  min-width: 0;
+}
+
+.app-offers {
+  margin-top: 2.5rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-brand-bar {
+  background: #fff;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 991.98px) {
+  .app-shell {
+    flex-direction: column;
   }
 
-  .card_black{
-    display: inline-flex;
-    margin: 2px;
+  .app-sidebar {
+    flex: none;
+    max-width: none;
+    width: 100%;
   }
-  .no-item:not(:first-child) {
-    display:none;
+
+  .app-content {
+    padding: 1rem;
   }
+}

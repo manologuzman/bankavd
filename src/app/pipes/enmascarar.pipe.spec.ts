@@ -6,15 +6,13 @@ describe('EnmascararPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('should by return transform()', () => {
+  it('should mask leaving last 4 digits', () => {
     const pipe = new EnmascararPipe();
-    pipe.transform(110001111122222);
-    expect(pipe).not.toBeNull;
+    expect(pipe.transform(4544769920667611)).toEqual('**** **** **** 7611');
   });
 
-  it('should by return transform()', () => {
+  it('should handle short values', () => {
     const pipe = new EnmascararPipe();
-    pipe.transform(1100011111);
-    expect(pipe).not.toBeNull;
-  }); 
+    expect(pipe.transform(1234)).toEqual('1234');
+  });
 });

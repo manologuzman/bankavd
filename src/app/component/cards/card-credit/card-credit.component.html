@@ -1,11 +1,19 @@
-<div class="card m-2 p-1" *ngFor="let item of items" style="width: 15em;height: 20em;display: inline-block;">
-    <a href="#" class="stretched-link align-top float-right ">Ver Detalle ></a>
-    <img src="../../../../assets/credito.JPG" class="rounded float-left" alt="bank" width="60" height="50">
-    <br><br>
-    <div class="w-100"></div>
-    <div class="card-body">
-        <h5 class="card-title">{{item.accountInformation.productType| nproducts}}</h5>
-        <p class="card-text">Nro. {{item.id}}</p>
-        <p class="card-text">Bloqueda: {{item.locked}}</p>
-    </div>
+<div class="card product-card" *ngIf="item">
+  <div class="product-card__top">
+    <img src="assets/credito.JPG" class="product-card__icon" alt="crédito" />
+    <a href="#" class="product-card__link">Ver Detalle &gt;</a>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ item.accountInformation.productType | nproducts }}</h5>
+    <p class="card-text">Nro. {{ item.id }}</p>
+    <p class="card-text">
+      Estado:
+      <span [class.text-danger]="item.locked" [class.text-success]="!item.locked">
+        <strong>{{ item.locked ? 'Bloqueado' : 'Activo' }}</strong>
+      </span>
+    </p>
+    <p class="card-text text-muted" *ngIf="item.locked">
+      Este producto se encuentra bloqueado. Contacta a tu entidad para más información.
+    </p>
+  </div>
 </div>

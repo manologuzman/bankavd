@@ -1,49 +1,118 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Smartphones (landscape) ----------- */
-
-@media only screen and (min-width: 321px) {
-    .usuario {
-        text-align: center;
-    }
-    .logo {
-        width: 5em;
-        height: 5em;
-        margin: 0;
-        padding: 0;
-    }
-    .m_productos {
-        text-align: center;
-    }
-  
+/* Tipografía y base */
+html {
+  font-size: 16px;
 }
 
-/* Large desktop */
-
-@media (min-width: 1200px) {
-    .usuario {
-        text-align: left;
-    } 
-    .m_productos {
-        text-align: left;
-    }
-}
-
-/* Portrait tablet to landscape and desktop */
-
-@media (min-width: 768px) and (max-width: 979px) {
-    .usuario {
-        text-align: left;
-    }
-    .m_productos {
-        text-align: left;
-    }
-}
-
-p {
-    font-size: x-small;
+body {
+  margin: 0;
+  background-color: #f0f2f5;
+  color: #212529;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
 }
 
 a {
-    font-size: x-small;
+  color: #0d6efd;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #0a58ca;
+}
+
+/* Layout responsive: alineación de textos de utilidad */
+@media only screen and (max-width: 767.98px) {
+  .usuario,
+  .m_productos {
+    text-align: center;
+  }
+
+  .logo {
+    width: 4.5rem;
+    height: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .usuario,
+  .m_productos {
+    text-align: left;
+  }
+}
+
+/* Cards de producto (compartidas) */
+.product-card {
+  width: 100%;
+  height: 100%;
+  min-height: 16rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid #dee2e6;
+  border-radius: 0.35rem;
+  background: #fff;
+  padding: 0.75rem 0.85rem;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.product-card:hover {
+  border-color: #c5ccd4;
+  box-shadow: 0 0.25rem 0.75rem rgba(33, 37, 41, 0.08);
+}
+
+.product-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.product-card__icon {
+  width: 3.25rem;
+  height: 2.75rem;
+  object-fit: contain;
+  border-radius: 0.25rem;
+}
+
+.product-card__link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 2;
+  position: relative;
+}
+
+.product-card .card-body {
+  flex: 1;
+  padding: 0.35rem 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card .card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+  color: #212529;
+}
+
+.product-card .card-text {
+  font-size: 0.8125rem;
+  color: #6c757d;
+  margin-bottom: 0.35rem;
+}
+
+.product-card .card-text strong,
+.product-card .card-amount {
+  color: #212529;
+  font-weight: 700;
+}
+
+.product-card .btn {
+  margin-top: auto;
+}
+
+.product-card .progress {
+  height: 0.45rem;
+  margin-top: 0.5rem;
 }

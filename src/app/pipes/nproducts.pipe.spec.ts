@@ -6,15 +6,14 @@ describe('NproductsPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('should by return maysprimera()', () => {
+  it('should translate known product types', () => {
     const pipe = new NproductsPipe();
-    pipe.maysprimera("hi");
-    expect(pipe).not.toBeNull;
+    expect(pipe.transform('CREDIT_CARD')).toEqual('Tarjeta de crédito');
+    expect(pipe.transform('DEPOSIT_ACCOUNT')).toEqual('Cuenta de ahorros');
   });
 
-  it('should by return transform()', () => {
+  it('should format unknown values', () => {
     const pipe = new NproductsPipe();
-    pipe.transform("Manuel");
-    expect(pipe).not.toBeNull;
+    expect(pipe.transform('OTRO_PRODUCTO')).toEqual('Otro producto');
   });
 });

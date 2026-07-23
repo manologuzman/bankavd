@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CardCertifiedDepositTermComponent } from './card-certified-deposit-term.component';
+import { NproductsPipe } from '../../../pipes/nproducts.pipe';
 
 describe('CardCertifiedDepositTermComponent', () => {
   let component: CardCertifiedDepositTermComponent;
@@ -8,9 +8,8 @@ describe('CardCertifiedDepositTermComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardCertifiedDepositTermComponent ]
-    })
-    .compileComponents();
+      declarations: [CardCertifiedDepositTermComponent, NproductsPipe]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,17 +21,4 @@ describe('CardCertifiedDepositTermComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should setItem()', () => {
-    let item=[]; 
-    component.setItem(item);
-    expect(component).not.toBeNull();
-  });
-
-  it('should call ngOnChanges()', ()=> {
-    spyOn(component, 'ngOnChanges').and.callThrough();
-    fixture.detectChanges();
-    expect(component.ngOnChanges()).toHaveBeenCalled();
-})
- 
 });

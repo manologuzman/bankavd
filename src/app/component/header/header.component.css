@@ -1,0 +1,71 @@
+:host {
+  display: block;
+}
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.app-header__greeting {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.app-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+
+.app-header__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #495057;
+  border-right: 1px solid #dee2e6;
+  text-decoration: none;
+}
+
+.app-header__action:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.app-header__action:first-child {
+  padding-left: 0;
+}
+
+.app-header__action img {
+  border-radius: 0.25rem;
+  object-fit: contain;
+}
+
+.app-header__action:hover {
+  color: #0d6efd;
+}
+
+@media (max-width: 575.98px) {
+  .app-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .app-header__actions {
+    justify-content: center;
+  }
+
+  .app-header__action {
+    padding: 0.35rem 0.65rem;
+  }
+}

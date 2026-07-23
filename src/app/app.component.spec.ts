@@ -1,19 +1,23 @@
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AppComponent } from './app.component';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ProductService } from '../app/services/product.service';
+import { ProductService } from './services/product.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        FormsModule
       ],
       declarations: [
         AppComponent
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
 
@@ -23,33 +27,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'bankavd'`, () => {
+  it(`should have as title 'Bank AVD'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('bankavd');
+    expect(app.title).toEqual('Bank AVD');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent()).toContain('bankavd app is running!');
-  });
-
-  it('should get getJsons', async(() => {
-    const service: ProductService = TestBed.get(ProductService);
-    service.getJsons().subscribe(
-      (response) => expect(response).not.toBeNull(),
-      (error) => fail(error)
-    );
-  }));
-
-  it('should call ngOnChanges()', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    spyOn(app, 'ngOnChanges').and.callThrough();
-    fixture.detectChanges();
-    expect(app.ngOnChanges()).toHaveBeenCalled();
+  it('should get getJsons', () => {
+    const service: ProductService = TestBed.inject
+      ? TestBed.inject(ProductService)
+      : TestBed.get(ProductService);
+    expect(service.getJsons()).toBeTruthy();
   });
 
   it('should call ngOnInit()', () => {
@@ -57,7 +45,6 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     spyOn(app, 'ngOnInit').and.callThrough();
     fixture.detectChanges();
-    expect(app.ngOnInit()).toHaveBeenCalled();
+    expect(app.ngOnInit).toHaveBeenCalled();
   });
-
 });

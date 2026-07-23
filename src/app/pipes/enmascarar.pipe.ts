@@ -1,27 +1,29 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Validators } from '@angular/forms';
 
 @Pipe({
   name: 'enmascarar'
 })
 export class EnmascararPipe implements PipeTransform {
 
-  transform(value: Number): string {
-    let valor = value.toString();
+  transform(value: number | string): string {
+    if (value === null || value === undefined) {
+      return '';
+    }
+
+    const valor = value.toString().replace(/\s/g, '');
     let result = '';
 
-    for (var i = 0; i < valor.length; i++) {
-      if (i <= 12) {
-        if (i % 4 == 0) {
-          result += ' ';
-          result += '*';
-        } else {
-          result += '*';
-        }
+    for (let i = 0; i < valor.length; i++) {
+      if (i > 0 && i % 4 === 0) {
+        result += ' ';
+      }
+      if (i < valor.length - 4) {
+        result += '*';
       } else {
         result += valor[i];
       }
     }
+
     return result;
   }
 
