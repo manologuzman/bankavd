@@ -17,12 +17,29 @@
         </label>
       </div>
 
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-8 bg-gradient-to-br from-primary to-purple-500 rounded-2xl p-6 lg:p-8 mb-8 text-white shadow-lg">
-        <p class="text-xl font-semibold m-0">¿Cómo se ven tus finanzas?</p>
-        <div class="flex flex-wrap items-baseline gap-3">
-          <span class="text-[0.95rem] font-medium opacity-90">En productos de Ahorro tienes:</span>
-          <span class="text-3xl font-extrabold tracking-tight">{{ totalAhorro | currency:'COP':'symbol-narrow':'1.2-2' }}</span>
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-8 bg-gradient-to-br from-primary to-purple-500 rounded-2xl p-6 lg:p-8 mb-8 text-white shadow-lg relative overflow-hidden">
+        <!-- Text content -->
+        <div class="flex-1 z-10">
+          <p class="text-xl font-semibold m-0 mb-4">¿Cómo se ven tus finanzas?</p>
+          <div class="flex flex-col gap-1">
+            <span class="text-[0.95rem] font-medium opacity-90">Total consolidado (Ahorros):</span>
+            <span class="text-4xl font-extrabold tracking-tight">{{ totalAhorro | currency:'COP':'symbol-narrow':'1.2-2' }}</span>
+          </div>
         </div>
+        
+        <!-- Chart Canvas -->
+        <div class="w-full lg:w-72 h-48 lg:h-36 z-10">
+          <canvas baseChart
+            [data]="doughnutChartData"
+            [labels]="doughnutChartLabels"
+            [chartType]="doughnutChartType"
+            [colors]="doughnutChartColors"
+            [options]="doughnutChartOptions">
+          </canvas>
+        </div>
+        
+        <!-- Decorative background -->
+        <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-white opacity-5 rounded-full z-0 pointer-events-none"></div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
